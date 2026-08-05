@@ -3,9 +3,9 @@
 class Transcriber < Formula
   desc "Record and transcribe conversations on-device (mic + system audio)"
   homepage "https://github.com/alikimovich/transcriber"
-  url "https://github.com/alikimovich/transcriber/releases/download/v0.1.1/transcriber-v0.1.1-macos-arm64.zip"
-  sha256 "669086a657da46dbdc431d1c2d788522e1d686d8b87b3923ac2a19de0f2bf3e2"
-  version "0.1.1"
+  url "https://github.com/alikimovich/transcriber/releases/download/v0.1.2/transcriber-v0.1.2-macos-arm64.zip"
+  sha256 "fb793390d5021f311038c252c5da6edfcaafcef2c01f8b2e2afe7a3f2326fee8"
+  version "0.1.2"
   license "MIT"
 
   depends_on :macos
