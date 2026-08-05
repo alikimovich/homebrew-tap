@@ -12,7 +12,13 @@ class Transcriber < Formula
   depends_on arch: :arm64
 
   def install
-    bin.install "transcriber", "tcapture"
+    # The CLI and the helper's app bundle go to libexec together — the CLI
+    # finds TranscriberCapture.app next to its own executable, and the bundle
+    # (not a bare binary) is what makes macOS attribute the mic and
+    # system-audio permission prompts to "Transcriber Capture" instead of the
+    # user's terminal.
+    libexec.install "transcriber", "TranscriberCapture.app"
+    bin.write_exec_script libexec/"transcriber"
   end
 
   def caveats
@@ -20,8 +26,9 @@ class Transcriber < Formula
       Requires macOS 26+ (transcription runs on-device via SpeechAnalyzer).
 
       Grant microphone access once, up front:
-        tcapture request-mic
-      macOS asks for Screen & System Audio Recording on the first capture.
+        transcriber request-mic
+      macOS asks for Screen & System Audio Recording on the first capture;
+      both prompts name "Transcriber Capture".
 
       Recordings are saved to ~/Documents/Conversations by default;
       set TRANSCRIBER_CONVERSATIONS to change that.
